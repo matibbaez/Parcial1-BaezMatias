@@ -26,87 +26,18 @@ function mostrarDatosPersonales() {
   console.log(nombreCompleto);
 }
 
-// Productos
-const db = [
-  {
-    id: 1,
-    nombre: "Anana",
-    precio: 4500,
-    img: "img/anana.jpg"
-  },
-  {
-    id: 2,
-    nombre: "Arandano",
-    precio: 5000,
-    img: "img/arandano.jpg"
-  },
-  {
-    id: 3,
-    nombre: "Banana",
-    precio: 2000,
-    img: "img/banana.jpg"
-  },
-  {
-    id: 4,
-    nombre: "Frambuesa",
-    precio: 6000,
-    img: "img/frambuesa.png"
-  },
-  {
-    id: 5,
-    nombre: "Frutilla",
-    precio: 3500,
-    img: "img/frutilla.jpg"
-  },
-  {
-    id: 6,
-    nombre: "Kiwi",
-    precio: 4000,
-    img: "img/kiwi.jpg"
-  },
-  {
-    id: 7,
-    nombre: "Mandarina",
-    precio: 2500,
-    img: "img/mandarina.jpg"
-  },
-  {
-    id: 8,
-    nombre: "Manzana",
-    precio: 3000,
-    img: "img/manzana.jpg"
-  },
-  {
-    id: 9,
-    nombre: "Naranja",
-    precio: 2500,
-    img: "img/naranja.jpg"
-  },
-  {
-    id: 10,
-    nombre: "Pera",
-    precio: 3500,
-    img: "img/pera.jpg"
-  },
-  {
-    id: 11,
-    nombre: "Pomelo Amarillo",
-    precio: 3000,
-    img: "img/pomelo-amarillo.jpg"
-  },
-  {
-    id: 12,
-    nombre: "Pomelo Rojo",
-    precio: 3200,
-    img: "img/pomelo-rojo.jpg"
-  },
-  {
-    id: 13,
-    nombre: "Sandia",
-    precio: 8000,
-    img: "img/sandia.jpg"
+let db = []; // Variable global para almacenar los productos
+
+async function cargarProductos() {
+  try {
+    const response = await fetch('data/productos.json');
+    db = await response.json();
+    renderizarProductos(db);
+  } catch (error) {
+    console.error('Error cargando productos:', error);
+    // Puedes mostrar un mensaje al usuario aquí
   }
-];
+}
 
 // Función para renderizar productos en el DOM
 function renderizarProductos(productos) {
@@ -160,7 +91,7 @@ function guardarCarrito() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// Agregar producto al carrito
+// Función para agregar al carrito 
 function agregarAlCarrito(productoId) {
   const producto = db.find(p => p.id === productoId);
   if (producto) {
@@ -172,14 +103,14 @@ function agregarAlCarrito(productoId) {
       text: `✔ ${producto.nombre} agregado al carrito`,
       duration: 3000,
       gravity: "bottom",
-      position: "right",
+      position: "left",  
       backgroundColor: "#28a745",
       stopOnFocus: true
     }).showToast();
   }
 }
 
-// Eliminar producto del carrito
+// Función para eliminar del carrito 
 function eliminarDelCarrito(index) {
   const productoEliminado = carrito[index];
   carrito.splice(index, 1);
@@ -187,10 +118,10 @@ function eliminarDelCarrito(index) {
   actualizarCarrito();
   
   Toastify({
-    text: `✖ ${productoEliminado.nombre} se ha eliminado del carrito`,
+    text: `✖ ${productoEliminado.nombre} eliminado del carrito`,
     duration: 3000,
     gravity: "bottom",
-    position: "right",
+    position: "left",  
     backgroundColor: "#dc3545",
     stopOnFocus: true
   }).showToast();
@@ -246,9 +177,9 @@ function manejarEventosCarrito() {
 }
 
 // Función inicializadora
-function init() {
+async function init() {
   mostrarDatosPersonales();
-  renderizarProductos(db);
+  await cargarProductos(); 
   filtro();
   cargarCarrito();
   manejarEventosCarrito();
