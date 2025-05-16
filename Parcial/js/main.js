@@ -186,8 +186,14 @@ function manejarEventosCarrito() {
 
 // Función inicializadora
 function init() {
-  // Aquí deben invocarse todas las funciones necesarias para que la aplicación comience a funcionar
-  
+  mostrarDatosPersonales();
+  renderizarProductos(db);
+  filtro();
+  cargarCarrito();
+  manejarEventosCarrito();
 }
+
+// Iniciar la aplicación cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', init);
 
 
