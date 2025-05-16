@@ -125,14 +125,33 @@ function agregarAlCarrito(productoId) {
     carrito.push(producto);
     guardarCarrito();
     actualizarCarrito();
+    
+    Toastify({
+      text: `✔ ${producto.nombre} agregado al carrito`,
+      duration: 3000,
+      gravity: "bottom",
+      position: "right",
+      backgroundColor: "#28a745",
+      stopOnFocus: true
+    }).showToast();
   }
 }
 
 // Eliminar producto del carrito
 function eliminarDelCarrito(index) {
+  const productoEliminado = carrito[index];
   carrito.splice(index, 1);
   guardarCarrito();
   actualizarCarrito();
+  
+  Toastify({
+    text: `✖ ${productoEliminado.nombre} se ha eliminado del carrito`,
+    duration: 3000,
+    gravity: "bottom",
+    position: "right",
+    backgroundColor: "#dc3545",
+    stopOnFocus: true
+  }).showToast();
 }
 
 // Actualizar el carrito
