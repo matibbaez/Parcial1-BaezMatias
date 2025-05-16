@@ -89,13 +89,17 @@ function renderizarProductos(productos) {
   });
 }
 
-/*  
-    Punto 4 _________________________
-
-    Crea la función `filtro()` para filtrar los productos por nombre.
-    - Asocia esta función al evento `keyup` de un campo `<input>`.
-    - Cada vez que se escriba una letra, deben mostrarse solo los productos que coincidan con el texto ingresado.
-*/
+// Función para filtrar productos por nombre
+function filtro() {
+  const searchInput = document.querySelector('.search-bar');
+  searchInput.addEventListener('keyup', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const productosFiltrados = db.filter(producto => 
+      producto.nombre.toLowerCase().includes(searchTerm)
+    );
+    renderizarProductos(productosFiltrados);
+  });
+}
 
 /*  
     Punto 5 _________________________
