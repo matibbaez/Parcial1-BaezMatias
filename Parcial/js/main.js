@@ -19,40 +19,75 @@ const misDatos = {
   dni: "46579833"
 };
 
-// Mostrar nombre y apellido en el nav y en consola
+// Mostrar nombre y apellido
 function mostrarDatosPersonales() {
   const nombreCompleto = `${misDatos.nombre} ${misDatos.apellido}`;
   document.querySelector('.nombreAlumno').textContent = nombreCompleto;
   console.log(nombreCompleto);
 }
 
-/*  
-    Punto 2 _________________________
+// Productos
+const db = [
+  {
+    id: 1,
+    nombre: "arandano",
+    precio: 5000,
+    img: "img/arandano.jpg"
+  },
+  {
+    id: 2,
+    nombre: "banana",
+    precio: 2000,
+    img: "img/banana.jpg"
+  },
+  {
+    id: 3,
+    nombre: "manzana",
+    precio: 3000,
+    img: "img/manzana.jpg"
+  },
+  {
+    id: 4,
+    nombre: "naranja",
+    precio: 2500,
+    img: "img/naranja.jpg"
+  },
+  {
+    id: 5,
+    nombre: "pera",
+    precio: 3500,
+    img: "img/pera.jpg"
+  },
+  {
+    id: 6,
+    nombre: "sandia",
+    precio: 8000,
+    img: "img/sandia.jpg"
+  }
+];
 
-    Simula la carga de datos desde un archivo `db.json`. Este debe tener objetos con esta estructura:
-    {
-        "id": 1,
-        "nombre": "arandano",
-        "precio": 5000,
-        "img": "img/arandano.jpg"
-    }
-*/
-
-/*  
-    Punto 3 _________________________
-
-    Imprime los productos en pantalla al cargar la página.
-    Agrega esta funcionalidad dentro de la función `init()`.
-
-    El HTML que debes agregar por cada producto es el siguiente:
-
-        <div class="product-card">
-            <img src="ruta" alt="nombre">
-            <h3>Nombre del producto</h3>
-            <p>$Precio</p>
-            <button class="add-to-cart">Agregar a carrito</button>
-        </div>
-*/
+// Función para renderizar productos en el DOM
+function renderizarProductos(productos) {
+  const productGrid = document.querySelector('.product-grid');
+  productGrid.innerHTML = ''; // Limpiar el contenedor
+  
+  if (productos.length === 0) {
+    productGrid.innerHTML = '<p>No se encontraron productos</p>';
+    return;
+  }
+  
+  productos.forEach(producto => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product-card';
+    productCard.innerHTML = `
+      <img src="${producto.img}" alt="${producto.nombre}">
+      <h3>${producto.nombre}</h3>
+      <p>$${producto.precio}</p>
+      <button class="add-to-cart" data-id="${producto.id}">Agregar a carrito</button>
+    `;
+    productGrid.appendChild(productCard);
+  });
+}
 
 /*  
     Punto 4 _________________________
