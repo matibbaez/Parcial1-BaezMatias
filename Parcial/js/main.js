@@ -35,14 +35,13 @@ async function cargarProductos() {
     renderizarProductos(db);
   } catch (error) {
     console.error('Error cargando productos:', error);
-    // Puedes mostrar un mensaje al usuario aquí
   }
 }
 
 // Función para renderizar productos en el DOM
 function renderizarProductos(productos) {
   const productGrid = document.querySelector('.product-grid');
-  productGrid.innerHTML = ''; // Limpiar el contenedor
+  productGrid.innerHTML = ''; 
   
   if (productos.length === 0) {
     productGrid.innerHTML = '<p>No se encontraron productos</p>';
