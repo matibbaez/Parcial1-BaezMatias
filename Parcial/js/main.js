@@ -30,37 +30,79 @@ function mostrarDatosPersonales() {
 const db = [
   {
     id: 1,
-    nombre: "arandano",
+    nombre: "Anana",
+    precio: 4500,
+    img: "img/anana.jpg"
+  },
+  {
+    id: 2,
+    nombre: "Arandano",
     precio: 5000,
     img: "img/arandano.jpg"
   },
   {
-    id: 2,
-    nombre: "banana",
+    id: 3,
+    nombre: "Banana",
     precio: 2000,
     img: "img/banana.jpg"
   },
   {
-    id: 3,
-    nombre: "manzana",
+    id: 4,
+    nombre: "Frambuesa",
+    precio: 6000,
+    img: "img/frambuesa.png"
+  },
+  {
+    id: 5,
+    nombre: "Frutilla",
+    precio: 3500,
+    img: "img/frutilla.jpg"
+  },
+  {
+    id: 6,
+    nombre: "Kiwi",
+    precio: 4000,
+    img: "img/kiwi.jpg"
+  },
+  {
+    id: 7,
+    nombre: "Mandarina",
+    precio: 2500,
+    img: "img/mandarina.jpg"
+  },
+  {
+    id: 8,
+    nombre: "Manzana",
     precio: 3000,
     img: "img/manzana.jpg"
   },
   {
-    id: 4,
-    nombre: "naranja",
+    id: 9,
+    nombre: "Naranja",
     precio: 2500,
     img: "img/naranja.jpg"
   },
   {
-    id: 5,
-    nombre: "pera",
+    id: 10,
+    nombre: "Pera",
     precio: 3500,
     img: "img/pera.jpg"
   },
   {
-    id: 6,
-    nombre: "sandia",
+    id: 11,
+    nombre: "Pomelo Amarillo",
+    precio: 3000,
+    img: "img/pomelo-amarillo.jpg"
+  },
+  {
+    id: 12,
+    nombre: "Pomelo Rojo",
+    precio: 3200,
+    img: "img/pomelo-rojo.jpg"
+  },
+  {
+    id: 13,
+    nombre: "Sandia",
     precio: 8000,
     img: "img/sandia.jpg"
   }
